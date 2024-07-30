@@ -1,0 +1,136 @@
+#Estrutura de Repetição - Exercicio 2
+#Faça um programa que leia um nome de usuário e a sua senha e não aceite a senha igual ao nome do usuário, mostrando uma mensagem de erro e voltando a pedir as informações.
+usuario = input('Digite seu usuário')
+senha = input('Digite sua senha')
+
+while usuario == senha:
+    print('Sua senha não pode ser igual ao usuário')
+    senha = input('Digite sua senha')
+
+
+#Estrutura de Repetição - Exercicio 3
+#Faça um programa que leia e valide as seguintes informações:
+#Nome: maior que 3 caracteres;
+#Idade: entre 0 e 150;
+#Salário: maior que zero;
+#Sexo: 'f' ou 'm';
+#Estado Civil: 's', 'c', 'v', 'd';
+
+nome = input('Nome: ')
+idade = int(input('Idade: '))
+salario = float(input('Salário: '))
+sexo = input('Sexo: (f ou m)')
+estado_civil = input('Estado Civil: (s, c, v, d)')
+
+while len(nome) < 3 or idade > 150 or salario < 0 or (sexo == 'f' and sexo == 'm') or (estado_civil == 's' and estado_civil == 'c' and estado_civil == 'v' and estado_civil == 'd'):
+    print('Dados inválidos')
+    break
+
+print('Dados corretos e registradosS')
+
+
+#Estrutura de Repetição - Exercicio 4
+#Supondo que a população de um país A seja da ordem de 80000 habitantes com uma taxa anual de crescimento de 3% e que a população de B seja 200000 habitantes com uma taxa de crescimento de 1.5%. Faça um programa que calcule e escreva o número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas de crescimento.
+habitantesA = 80000
+habitantesB = 200000
+taxaA = 0.03
+taxaB = 0.015
+anos = 0
+
+while habitantesA < habitantesB:
+    habitantesA += habitantesA * taxaA
+    habitantesB += habitantesB * taxaB
+    anos += 1
+
+
+#Estrutura de Repetição - Exercicio 27
+#Faça um programa que calcule o número médio de alunos por turma. Para isto, peça a quantidade de turmas e a quantidade de alunos para cada turma. As turmas não podem ter mais de 40 alunos.
+
+turmas = int(input('Qual a quantidade de turmas: '))
+total_alunos = 0
+
+for i in range(turmas):
+  alunos = int(input(f'Quantos alunos tem na turma {i+1}: '))
+  total_alunos += alunos
+
+  media = total_alunos / turmas
+
+if turmas > 0:
+  print(f'A média de alunos por turma é de {media}.')
+else:
+  print('Não há turmas para calcular a média.')
+
+
+#Estrutura de Repetição - Exercicio 28
+#Faça um programa que calcule o valor total investido por um colecionador em sua coleção de CDs e o valor médio gasto em cada um deles. O usuário deverá informar a quantidade de CDs e o valor para em cada um.
+
+cd = int(input('Quantos CDs você tem em sua coleção: '))
+total = 0
+
+for i in range(cd):
+  valor = float(input(f'Qual o valor do CD {i+1}:'))
+  total += valor
+
+media = total / cd
+
+print(f'Você já gastou em média R${media} e gastou no total R${total}')
+
+#Estrutura de Repetição - Exercicio 29
+#O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas. Para agilizar o cálculo de quanto cada cliente deve pagar ele desenvolveu um tabela que contém o número de itens que o cliente comprou e ao lado o valor da conta. Desta forma a atendente do caixa precisa apenas contar quantos itens o cliente está levando e olhar na tabela de preços. Você foi contratado para desenvolver o programa que monta esta tabela de preços, que conterá os preços de 1 até 50 produtos, conforme o exemplo abaixo:
+
+valor = 1.99
+
+for i in range(51):
+  print(f'{i} x {valor} = {i * valor}')
+
+#Estrutura de Repetição - Exercicio 30
+#O Sr. Manoel Joaquim acaba de adquirir uma panificadora e pretende implantar a metodologia da tabelinha, que já é um sucesso na sua loja de 1,99. Você foi contratado para desenvolver o programa que monta a tabela de preços de pães, de 1 até 50 pães, a partir do preço do pão informado pelo usuário, conforme o exemplo abaixo:
+
+valor = float(input('Preço do Pão: R$'))
+
+for i in range(51):
+  print(f'{i} x {valor} = {i * valor}')
+
+#Estrutura de Repetição - Exercicio 31
+#O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e agora possui uma loja de conveniências. Faça um programa que implemente uma caixa registradora rudimentar. O programa deverá receber um número desconhecido de valores referentes aos preços das mercadorias. Um valor zero deve ser informado pelo operador para indicar o final da compra. O programa deve então mostrar o total da compra e perguntar o valor em dinheiro que o cliente forneceu, para então calcular e mostrar o valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, para registrar a próxima compra. A saída deve ser conforme o exemplo abaixo:
+while True:
+    print("Lojas Tabajara")
+    total = 0
+    produto_num = 1
+
+    while True:
+        preco = float(input(f"Produto {produto_num}: R$ "))
+        if preco == 0:
+            break
+        total += preco
+        produto_num += 1
+
+    print(f"Total: R$ {total:.2f}")
+    dinheiro = float(input("Dinheiro: R$ "))
+    troco = dinheiro - total
+    print(f"Troco: R$ {troco:.2f}")
+    print("\n")
+    break
+
+#Estrutura de Repetição - Exercicio 33
+#O Departamento Estadual de Meteorologia lhe contratou para desenvolver um programa que leia as um conjunto indeterminado de temperaturas, e informe ao final a menor e a maior temperaturas informadas, bem como a média das temperaturas.
+temperaturas = [-1, 10, 40, 32, 25, -3]
+
+soma_temperaturas = sum(temperaturas)
+media = soma_temperaturas / len(temperaturas)
+menor = min(temperaturas)
+maior = max(temperaturas)
+
+print(f'A média das temperaturas é {media:.1f}')
+print(f'A menor temperatura é {menor}')
+print(f'A maior temperatura é {maior}')
+
+
+#Estrutura de Repetição - Exercicio 36
+#Desenvolva um programa que faça a tabuada de um número qualquer inteiro que será digitado pelo usuário, mas a tabuada não deve necessariamente iniciar em 1 e terminar em 10, o valor inicial e final devem ser informados também pelo usuário.
+tabuada = int(input('Qual número você deseja exibir a tabuada: '))
+inicio = int(input('Qual número você deseja começar a tabuada: '))
+fim = int(input('Qual número você deseja finalizar a tabuada: '))
+
+for i in range(inicio, fim + 1):
+  print(f'{tabuada} x {i} = {tabuada * i}')
